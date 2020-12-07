@@ -1,0 +1,14 @@
+{
+  "name": "LogoFinder",
+  "version": "1.0.0",
+  "description": "Search for logos & company data",
+  "main": "backend/index.js",
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
+  },
+  "author": "Dan Buchholz",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
