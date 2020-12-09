@@ -7,10 +7,12 @@ import "./App.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
+  const [searchApiHasBeenCalled, setSearchApiHasBeenCalled] = useState(false);
   const [company, setCompany] = useState([]);
 
   // Search form in frontend sends to backend, which pulls data from Clearbit API
   const search = (searchTerm) => {
+    setSearchApiHasBeenCalled(true);
     try {
       axios.post("/api/search", {
         company: searchTerm,
@@ -34,6 +36,7 @@ function App() {
       setIsLoading(false);
     } catch (err) {
       console.log(err);
+      setCompany([]);
       setIsLoading(false);
     }
   }
@@ -42,11 +45,17 @@ function App() {
     <div>
       <Nav />
       <Search search={search} />
-      <ResultsSection
-        companyState={company}
-        setCompanyState={setCompany}
-        isLoadingState={isLoading}
-      />
+      {
+        searchApiHasBeenCalled ? (
+          <ResultsSection
+            companyState={company}
+            setCompanyState={setCompany}
+            isLoadingState={isLoading}
+          />
+        ) : (
+          <div></div>
+        )
+      }
     </div>
   );
 }

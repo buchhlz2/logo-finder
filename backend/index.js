@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-let companyDomain = "";
+let companyDomain = null;
 
 // Search data from frontend search term & pass to Clearbit API for company data
 // /api/search receives POST from frontend form "search" field
@@ -30,40 +30,44 @@ app.get('/api/search', (req, res) => {
   res.json({companyDomain});
 })
 
-async function getCompanyDomain() {
-  return companyDomain;
+async function getCompanyDomain(domain) {
+  return domain;
 }
 
 // Call to Clearbit API (https://clearbit.com/docs?javascript#logo-api) with company from frontend & /api/search
-// TODO: add logic to account for a company not being found; must add some sort of timeout and return nothing
 app.get("/api/company", (req, res) => {
-  console.log("Request to find logo");
+  console.log(`Backend request to find logo: ${companyDomain}`);
   async function fetchCompanyData() {
     try {
-      const companyName = await getCompanyDomain();
-      const companyData = await clearbit.Company.find({
-        domain: companyName,
-      });
-      res.json({
-        company: {
-          name: companyData.name,
-          description: companyData.description,
-          domain: companyData.domain,
-          logo: companyData.logo,
-          location: {
-            lat: companyData.geo.lat,
-            long: companyData.geo.lng,
+      if ((await getCompanyDomain(companyDomain)) === null) {
+        console.log("No domain provided to backend");
+        companyDomain = "";
+        res.json({});
+      } else {
+        const companyData = await clearbit.Company.find({
+          domain: companyDomain,
+        });
+        res.json({
+          company: {
+            name: companyData.name,
+            description: companyData.description,
+            domain: companyData.domain,
+            logo: companyData.logo,
+            location: {
+              lat: companyData.geo.lat,
+              long: companyData.geo.lng,
+            },
+            facebook: companyData.facebook,
+            linkedin: companyData.linkedin,
+            twitter: {
+              handle: companyData.twitter.handle,
+              avatar: companyData.twitter.avatar,
+            },
+            ticker: companyData.ticker,
+            ein: companyData.identifiers.usEIN,
           },
-          facebook: companyData.facebook,
-          linkedin: companyData.linkedin,
-          twitter: {
-            handle: companyData.twitter.handle,
-            avatar: companyData.twitter.avatar,
-          },
-          ticker: companyData.ticker,
-          ein: companyData.identifiers.usEIN,
-        },
-      });
+        });
+      }
     } catch (err) {
       console.log(err);
     }

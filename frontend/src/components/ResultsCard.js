@@ -1,8 +1,6 @@
 import React from "react";
 
 const ResultsCard = ({ companyState }) => {
-  // TODO: need to alter how "Could not find company info." is displayed
-  // Currently, it is shown regardless of if a search is made -- maybe move this aspect to ResultsSection
   return (
     <div>
       {companyState.length === 0 ? (

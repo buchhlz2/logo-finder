@@ -36,12 +36,11 @@ const Search = ({ search }) => {
     console.log(isURL(searchTerm));
     if (isURL(searchTerm)) {
       search(searchTerm);
-      console.log("Submitted search.");
-      resetInputField();
+      console.log("Submitted search.");    
     } else {
       setFormError("Please paste a valid link.");
-      resetInputField();
     }
+    resetInputField();
   };
 
   return (
