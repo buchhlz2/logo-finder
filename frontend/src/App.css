@@ -1,0 +1,18 @@
+.spinner {
+  animation: spin .5s infinite ease-in-out; 
+  border-radius: 50%;
+  border-top: 2px solid black;
+  display: inline-block;
+  height: 2em;
+  margin: calc(10vh - 1em) calc(10vw - 1em);
+  width: 2em;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg); 
+    -o-transform: rotate(360deg); 
+    transform: rotate(360deg); 
+  }
+}

@@ -17,6 +17,8 @@ app.use(cors());
 let companyDomain = "";
 
 // Search data from frontend search term & pass to Clearbit API for company data
+// /api/search receives POST from frontend form "search" field
+// /api/search allows GET request for dev purposes and potential future implementation
 app.post('/api/search', (req, res) => {
   console.log("Backend POST request to /api/search");
   companyDomain = req.body.company;
@@ -32,8 +34,8 @@ async function getCompanyDomain() {
   return companyDomain;
 }
 
-// Call to Clearbit API with hard-coded data (https://clearbit.com/docs?javascript#logo-api)
-// TODO: make dynamic -- to use search terms from '/api/search' & return searched company data
+// Call to Clearbit API (https://clearbit.com/docs?javascript#logo-api) with company from frontend & /api/search
+// TODO: add logic to account for a company not being found; must add some sort of timeout and return nothing
 app.get("/api/company", (req, res) => {
   console.log("Request to find logo");
   async function fetchCompanyData() {

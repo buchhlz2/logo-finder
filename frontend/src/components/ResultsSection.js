@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import ResultsCard from "./ResultsCard";
 
-const ResultsSection = ({ companyState }) => {
+const ResultsSection = ({ companyState, isLoadingState }) => {
   return (
     <div>
       <h2>RESULTS:</h2>
-      <ResultsCard companyState={companyState} />
+      {isLoadingState ? (
+        <span className="spinner"></span>
+      ) : (
+        <ResultsCard companyState={companyState} />
+      )}
     </div>
   );
 };;
