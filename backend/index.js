@@ -14,21 +14,33 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+let companyDomain = "";
+
 // Search data from frontend search term & pass to Clearbit API for company data
 app.post('/api/search', (req, res) => {
-  console.log("Search req to backend");
-  console.log(req.body.company);
-  res.status(201).send("Search data received on backend");
+  console.log("Backend POST request to /api/search");
+  companyDomain = req.body.company;
 });
+
+app.get('/api/search', (req, res) => {
+  console.log("Backend GET request to /api/search");
+  console.log(companyDomain);
+  res.json({companyDomain});
+})
+
+async function getCompanyDomain() {
+  return companyDomain;
+}
 
 // Call to Clearbit API with hard-coded data (https://clearbit.com/docs?javascript#logo-api)
 // TODO: make dynamic -- to use search terms from '/api/search' & return searched company data
-app.get('/api/company', (req, res) => {
+app.get("/api/company", (req, res) => {
   console.log("Request to find logo");
-  async function fetchLogo() {
+  async function fetchCompanyData() {
     try {
+      const companyName = await getCompanyDomain();
       const companyData = await clearbit.Company.find({
-        domain: "nike.com",
+        domain: companyName,
       });
       res.json({
         company: {
@@ -54,7 +66,7 @@ app.get('/api/company', (req, res) => {
       console.log(err);
     }
   }
-  fetchLogo();
+  fetchCompanyData();
 });
 
 if (ENV == "production") {

@@ -21,6 +21,9 @@ const ResultsCard = ({ companyState }) => {
             </a>
           </li>
           <li>
+            <p>{companyState.description}</p>
+          </li>
+          <li>
             <a
               href={`https://www.facebook.com/${companyState.facebook.handle}`}
               target={"_blank"}

@@ -16,6 +16,7 @@ function App() {
         company: searchTerm
       });
       console.log(searchTerm);
+      fetchCompanySearchResults();
     } catch (err) {
       console.log(err);
     }
@@ -33,10 +34,6 @@ function App() {
       console.log(err);
     }
   }
-
-  useEffect(() => {
-    fetchCompanySearchResults();
-  }, []);
 
   return (
     <div>

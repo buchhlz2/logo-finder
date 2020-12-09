@@ -18,7 +18,7 @@ const Search = (props) => {
 
   return (
     <div>
-      <h2>SEARCH:</h2>
+      <h2>SEARCH BY PASTING WEBSITE LINK:</h2>
       <form className="search">
         <input
           value={searchTerm}
