@@ -45,19 +45,17 @@ const Search = ({ search }) => {
 
   return (
     <div>
-      <h2>SEARCH BY PASTING WEBSITE LINK:</h2>
+      <h2>Search by Pasting Any Website Link</h2>
       <form className="search">
         <input
           value={searchTerm}
           onChange={handleSearchInputChanges}
           type="text"
           placeholder="Paste any website link"
+          className="search-form"
         />
-        <input
-          onClick={handleSearchSubmit}
-          type="submit"
-        />
-        <p>{formError && <span>{formError}</span>}</p>
+        <input onClick={handleSearchSubmit} type="submit" value="Search" className="btn"/>
+        <p className="form-error">{formError && <span>{formError}</span>}</p>
       </form>
     </div>
   );

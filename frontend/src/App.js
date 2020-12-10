@@ -42,11 +42,11 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <Nav />
-      <Search search={search} />
-      {
-        searchApiHasBeenCalled ? (
+      <main>
+        <Search search={search} />
+        {searchApiHasBeenCalled ? (
           <ResultsSection
             companyState={company}
             setCompanyState={setCompany}
@@ -54,8 +54,8 @@ function App() {
           />
         ) : (
           <div></div>
-        )
-      }
+        )}
+      </main>
     </div>
   );
 }

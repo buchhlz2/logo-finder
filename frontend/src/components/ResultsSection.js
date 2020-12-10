@@ -4,7 +4,6 @@ import ResultsCard from "./ResultsCard";
 const ResultsSection = ({ companyState, isLoadingState }) => {
   return (
     <div>
-      <h2>RESULTS:</h2>
       {isLoadingState ? (
         <span className="spinner"></span>
       ) : (

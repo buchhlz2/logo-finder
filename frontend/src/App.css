@@ -1,5 +1,49 @@
+:root {
+  --black: #000000ff;
+  --dark-slate-gray: #354d46ff;
+  --polished-pine: #6a9a8bff;
+  --green-sheen: #81baa8ff;
+  --opal: #bdd9d0ff;
+  --cultured: #f9f8f8ff;
+  --white: #ffffffff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cultured);
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  height: 100%;
+}
+
+.app {
+  text-align: center;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+nav {
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px rgba(14, 14, 14, 0.26);
+  text-align: center;
+}
+
+.nav-brand {
+  text-decoration: none;
+  color: var(--polished-pine);
+  font-weight: 800;
+  font-size: xx-large;
+}
+
 .spinner {
-  animation: spin .5s infinite ease-in-out; 
+  animation: spin 0.5s infinite ease-in-out;
   border-radius: 50%;
   border-top: 2px solid black;
   display: inline-block;
@@ -11,8 +55,82 @@
 @keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg); 
-    -o-transform: rotate(360deg); 
-    transform: rotate(360deg); 
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
+}
+
+.search-form {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid var(--polished-pine);
+  padding: 0.8rem 1rem;
+  border-radius: 7px;
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0.7rem 2.5rem;
+  border: none;
+  appearance: none;
+  user-select: none;
+  color: var(--white);
+  background: var(--polished-pine);
+}
+
+.btn:hover {
+  background-color: var(--dark-slate-gray);
+  box-shadow: 0 6px 6px var(--black);
+  
+}
+
+.btn:active {
+  transform: translateY(2px);
+}
+
+.form-error {
+  color: rgb(223, 56, 56);
+}
+
+.results-card {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px var(--black), 0 6px 6px var(--black);
+  padding: 1rem;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.results-card a {
+  text-decoration: none;
+  color: var(--polished-pine);
+  font-weight: 300;
+}
+
+.results-card a:hover {
+  font-weight: 800;
+}
+
+.results-card-list {
+  list-style-type: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+}
+
+.results-card-list li {
+    display: inline-block;
+    margin: 1em;
+}
+
+.results-card-list-icon {
+  font-size: 180%;
+}
+
+.results-card-list-icon:hover {
+  color: var(--green-sheen);
 }
