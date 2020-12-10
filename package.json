@@ -4,7 +4,7 @@
   "description": "Search for logos & company data",
   "main": "backend/index.js",
   "engines": {
-    "node": "12.18.3"
+    "node": "14.15.1"
   },
   "scripts": {
     "start": "NODE_ENV=production node backend/index.js",
