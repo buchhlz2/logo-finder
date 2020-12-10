@@ -4,6 +4,8 @@
   "description": "Search for logos & company data",
   "main": "backend/index.js",
   "scripts": {
+    "start": "NODE_ENV=production node backend/index.js",
+    "postinstall": "(cd backend && npm install) && (cd frontend && npm install) && (cd frontend && npm run build)",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
   },
   "author": "Dan Buchholz",
