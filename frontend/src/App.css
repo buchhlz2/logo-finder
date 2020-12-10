@@ -4,7 +4,8 @@
   --polished-pine: #6a9a8bff;
   --green-sheen: #81baa8ff;
   --opal: #bdd9d0ff;
-  --cultured: #f9f8f8ff;
+  --medium: #e1e3e5;
+  --cultured: #f9f8f8a0;
   --white: #ffffffff;
 }
 
@@ -96,12 +97,21 @@ nav {
 }
 
 .results-card {
-  background-color: var(--white);
-  border-radius: 5px;
   box-shadow: 0 1px 2px var(--black), 0 6px 6px var(--black);
   padding: 1rem;
   width: 50%;
-  margin: 0 auto;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  background-color: var(--white);
+  margin: 30px auto;
+  -webkit-box-shadow: 0 3px 7px 0 var(--medium), 0 1px 2px 0 #e1e3e5;
+  -moz-box-shadow: 0 3px 7px 0 var(--medium),0 1px 2px 0 #e1e3e5;
+  -o-box-shadow: 0 3px 7px 0 var(--medium),0 1px 2px 0 #e1e3e5;
+  -ms-box-shadow: 0 3px 7px 0 var(--medium),0 1px 2px 0 #e1e3e5;
+  box-shadow: 0 3px 7px 0 var(--medium), 0 1px 2px 0 #e1e3e5;
 }
 
 .results-card a {
@@ -133,4 +143,26 @@ nav {
 
 .results-card-list-icon:hover {
   color: var(--green-sheen);
+}
+
+.divider {
+  border-top: 1px solid var(--medium);
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1em;
+}
+
+.table-divider-header {
+  text-align: left;
+  margin-left: 1.3em;
+  margin-bottom: -1em;
+}
+
+.results-card-table {
+  width: 100%;
+  table-layout : fixed;
+}
+
+.results-card-table tr {
+  vertical-align: top;
 }

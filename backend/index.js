@@ -52,9 +52,12 @@ app.get("/api/company", (req, res) => {
             description: companyData.description,
             domain: companyData.domain,
             logo: companyData.logo,
+            foundedYear: companyData.foundedYear,
+            industry: companyData.category.industry,
             location: {
               lat: companyData.geo.lat,
               long: companyData.geo.lng,
+              address: companyData.location,
             },
             facebook: companyData.facebook,
             linkedin: companyData.linkedin,
@@ -64,6 +67,17 @@ app.get("/api/company", (req, res) => {
             },
             ticker: companyData.ticker,
             ein: companyData.identifiers.usEIN,
+            tags: companyData.tags,
+            crunchbase: companyData.crunchbase.handle,
+            metrics: {
+              employees: companyData.metrics.employees,
+              marketCap: companyData.metrics.marketCap,
+              raised: companyData.metrics.raised,
+              annualRevenue: companyData.metrics.annualRevenue,
+              estimatedAnnualRevenue:
+                companyData.metrics.estimatedAnnualRevenue,
+              fiscalYearEnd: companyData.metrics.fiscalYearEnd,
+            },
           },
         });
       }

@@ -46,6 +46,7 @@ const Search = ({ search }) => {
   return (
     <div>
       <h2>Search by Pasting Any Website Link</h2>
+      <p><em>We will return a wealth of information on what we know about the company.</em></p>
       <form className="search">
         <input
           value={searchTerm}
