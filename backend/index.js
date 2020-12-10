@@ -6,7 +6,6 @@ const path = require("path");
 const axios = require("axios");
 require("dotenv").config();
 const clearbit = require("clearbit")(`${process.env.CLEARBIT_KEY}`);
-
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || "development";
 
